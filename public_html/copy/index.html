@@ -1,9 +1,109 @@
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" href="/css/main.css">
+	<style>
+		td {
+			padding-left: 5px;
+			padding-bottom: 5px;
+			/* border-style: solid; */
+			border-width: 1px;
+			border-color: green;
+			padding: 3px 0;
+			text-align: center;
+		}
+		span {
+			height: auto;
+			position: relative;
+			/* float: left; */
+			vertical-align: middle;
+			text-align: center;
+			margin-right: 3px;
+		}
+		button {
+			float: left;
+			vertical-align: middle;
+		}
+		.inlineTable {
+            display: inline-block;
+			width: 15%;
+        }
+	</style>
 </head>
 <body>
-Copy
+    <table class="inlineTable">
+    <tr><td><span>а́</span></td><td><button></button></td></tr>
+    <tr><td><span>е́</span></td><td><button></button></td></tr>
+    <tr><td><span>є́</span></td><td><button></button></td></tr>
+    <tr><td><span>и́</span></td><td><button></button></td></tr>
+    <tr><td><span>і́</span></td><td><button></button></td></tr>
+    <tr><td><span>ї́</span></td><td><button></button></td></tr>
+    <tr><td><span>о́</span></td><td><button></button></td></tr>
+    <tr><td><span>у́</span></td><td><button></button></td></tr>
+    <tr><td><span>ю́</span></td><td><button></button></td></tr>
+    <tr><td><span>я́</span></td><td><button></button></td></tr>
+    </table>
+    <table class="inlineTable">
+    <tr><td><span>А́</span></td><td><button></button></td></tr>
+    <tr><td><span>Е́</span></td><td><button></button></td></tr>
+    <tr><td><span>Є́</span></td><td><button></button></td></tr>
+    <tr><td><span>И́</span></td><td><button></button></td></tr>
+    <tr><td><span>І́</span></td><td><button></button></td></tr>
+    <tr><td><span>Ї́</span></td><td><button></button></td></tr>
+    <tr><td><span>О́</span></td><td><button></button></td></tr>
+    <tr><td><span>У́</span></td><td><button></button></td></tr>
+    <tr><td><span>Ю́</span></td><td><button></button></td></tr>
+    <tr><td><span>Я́</span></td><td><button></button></td></tr>
+    </table>
+    <table class="inlineTable">
+    <tr><td><span>—</span></td><td><button></button></td></tr>
+    <tr><td><span>э</span></td><td><button></button></td></tr>
+    <tr><td><span>ы</span></td><td><button></button></td></tr>
+    <tr><td><span>«</span></td><td><button></button></td></tr>
+    <tr><td><span>»</span></td><td><button></button></td></tr>
+    </table>
+    
+    <script>
+    	let action_text = 'Скопіювати';
+    	let result_text = 'Скопійовано!';
+    
+    	document.querySelectorAll('tr').forEach(function(tr) {
+    		let curr_span = null;
+    		let curr_button = null;
+    		tr.querySelectorAll('span').forEach(function(span) {
+    			curr_span = span;
+    		});
+    		tr.querySelectorAll('button').forEach(function(button) {
+    			button.innerHTML = action_text;
+    			curr_button = button;
+    		});
+    		if ( curr_span && curr_button ) {
+    			listen(curr_span, curr_button, action_text, result_text);
+    		}
+    	});
+    
+    	function listen (span, button, action_text, result_text) {
+    		button.addEventListener('click', function(event) {
+    			window.getSelection().removeAllRanges();
+    			var range = document.createRange();
+    			range.selectNode(span);
+    			window.getSelection().addRange(range);
+    			try {
+    				var ok = document.execCommand('copy');
+    				var msg = ok ? 'ok' : 'failed';
+    				console.log('Copy command was ' + msg);
+    				this.innerHTML = result_text;
+    				setTimeout(function(){
+    					button.innerHTML = action_text;
+    					window.getSelection().removeRange(range);
+    				}, 1000);
+    			} catch(err) {
+    				console.log('Oops, unable to copy');
+    			}
+    			window.getSelection().removeRange(range);
+    		});
+    	}
+    </script>
 </body>
 </html>
