@@ -82,26 +82,20 @@
     			listen(curr_span, curr_button, action_text, result_text);
     		}
     	});
-    
+
     	function listen (span, button, action_text, result_text) {
     		button.addEventListener('click', function(event) {
-    			window.getSelection().removeAllRanges();
-    			var range = document.createRange();
-    			range.selectNode(span);
-    			window.getSelection().addRange(range);
-    			try {
-    				var ok = document.execCommand('copy');
-    				var msg = ok ? 'ok' : 'failed';
-    				console.log('Copy command was ' + msg);
-    				this.innerHTML = result_text;
-    				setTimeout(function(){
-    					button.innerHTML = action_text;
-    					window.getSelection().removeRange(range);
-    				}, 1000);
-    			} catch(err) {
-    				console.log('Oops, unable to copy');
-    			}
-    			window.getSelection().removeRange(range);
+    		    var copyText = document.createElement('input');
+                copyText.setAttribute('type', 'text');
+                copyText.setAttribute('value', span.innerHTML);
+                copyText.select();
+                copyText.setSelectionRange(0, 99999);
+                navigator.clipboard.writeText(copyText.value);
+                copyText.remove();
+                button.innerHTML = result_text;
+				setTimeout(function(){
+					button.innerHTML = action_text;
+				}, 1000);
     		});
     	}
     </script>
