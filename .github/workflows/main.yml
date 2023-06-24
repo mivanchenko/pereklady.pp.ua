@@ -1,0 +1,23 @@
+name: Convert Markdown to HTML
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  convert-to-html:
+    name: convert to html
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - run: |
+          git checkout HEAD^
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated" --amend
+          git push
