@@ -21,12 +21,14 @@ jobs:
       - uses: jaywcjlove/markdown-to-html-cli@main
         with:
           source: 0.md
-          output: 1.html
-          github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
-          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
+          output: 2.html
+#          github-corners: https://github.com/jaywcjlove/markdown-to-html-cli
+#          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
 
       - run: |
           date > date.txt
+          sed -e 's/dark="Dark"/dark="Ніч"/' 2.html
+          sed -e 's/dark="Light"/dark="День"/' 2.html
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
