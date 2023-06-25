@@ -10,7 +10,8 @@ jobs:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
 #      - run: npm i markdown-to-html-cli -g
 #      - run: markdown-to-html --source 0.md --output 0.html
@@ -34,12 +35,14 @@ jobs:
 #          git commit -m 'Convert Markdown to HTML' --no-verify
 #          git push
 
-      - run: |
+      - name: Manipulate
+        run: |
           date > date.txt
 #          sed -i -e 's/dark="Dark"/dark="Ніч"/' 2.html
 #          sed -i -e 's/light="Light"/light="День"/' 2.html
 
-      - run: |
+      - name: Commit
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
