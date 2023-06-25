@@ -20,6 +20,8 @@ jobs:
         run: |
           echo $RUNNER_OS
           echo ${{ env.DDT_PATH }}
+          echo $env.DDT_PATH
+          echo $DDT_PATH
 
 #      - run: npm i markdown-to-html-cli -g
 #      - run: markdown-to-html --source 0.md --output 0.html
