@@ -38,8 +38,8 @@ jobs:
       - name: Manipulate
         run: |
           date > date.txt
-#          sed -i -e 's/dark="Dark"/dark="Ніч"/' $DDT_PATH/0.html
-#          sed -i -e 's/light="Light"/light="День"/' $DDT_PATH/0.html
+          sed -i -e 's/dark="Dark"/dark="Ніч"/' $DDT_PATH/0.html
+          sed -i -e 's/light="Light"/light="День"/' $DDT_PATH/0.html
 
       - name: Commit
         run: |
