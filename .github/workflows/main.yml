@@ -28,7 +28,7 @@ jobs:
       - run: |
           date > date.txt
           sed -i -e 's/dark="Dark"/dark="Ніч"/' 2.html
-          sed -i -e 's/dark="Light"/dark="День"/' 2.html
+          sed -i -e 's/light="Light"/light="День"/' 2.html
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
