@@ -25,7 +25,7 @@ jobs:
 #
       - name: Convert
         uses: jaywcjlove/markdown-to-html-cli@main
-#        working-directory: ${{ env.working-directory }}
+        working-directory: ${{ env.working-directory }}
         with:
           source: index.md
           output: index.html
