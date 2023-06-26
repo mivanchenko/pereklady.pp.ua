@@ -25,7 +25,6 @@ jobs:
 #
       - name: Convert
         uses: jaywcjlove/markdown-to-html-cli@main
-#        working-directory: ${{ env.working-directory }}
         with:
           source: ${{ env.working-directory }}/index.md
           output: ${{ env.working-directory }}/index.html
@@ -34,10 +33,10 @@ jobs:
 #          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>
 
       - name: Manipulate
+        working-directory: ${{ env.working-directory }}
         run: |
-          date > date.txt
-#          sed -i -e 's/dark="Dark"/dark="Ніч"/' index.html
-#          sed -i -e 's/light="Light"/light="День"/' index.html
+          sed -i -e 's/dark="Dark"/dark="Ніч"/' index.html
+          sed -i -e 's/light="Light"/light="День"/' index.html
 
       - name: Commit
         run: |
