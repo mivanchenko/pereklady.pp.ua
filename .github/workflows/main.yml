@@ -5,19 +5,18 @@ on:
     branches:
     - main
 
-env:
-  DDT_PATH: books/ddt/
-
 jobs:
   convert-to-html:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./books/ddt/
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Show
-        working-directory: ./$DDT_PATH
+        working-directory: ${{ env.working-directory }}
         run: |
           ls [0-9]*.md | cut -f1 | sort -u | xargs cat > index.md
 
@@ -26,7 +25,7 @@ jobs:
 #
       - name: Convert
         uses: jaywcjlove/markdown-to-html-cli@main
-        working-directory: ./$DDT_PATH
+#        working-directory: ${{ env.working-directory }}
         with:
           source: index.md
           output: index.html
@@ -37,8 +36,8 @@ jobs:
       - name: Manipulate
         run: |
           date > date.txt
-          sed -i -e 's/dark="Dark"/dark="Ніч"/' $DDT_PATH/0.html
-          sed -i -e 's/light="Light"/light="День"/' $DDT_PATH/0.html
+#          sed -i -e 's/dark="Dark"/dark="Ніч"/' index.html
+#          sed -i -e 's/light="Light"/light="День"/' index.html
 
       - name: Commit
         run: |
