@@ -13,6 +13,7 @@ jobs:
       interim-file: index.md
       target-file: index.html
       working-directory: ./books/ddt
+      source-directory: source
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -35,9 +36,21 @@ jobs:
       - name: Manipulate
         working-directory: ${{ env.working-directory }}
         run: |
-          sed -i -e 's/dark="Dark"/dark="Ніч"/' ${{ env.target-file }}
-          sed -i -e 's/light="Light"/light="День"/' ${{ env.target-file }}
+          sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
+          sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
           sed -i -e 's/"\([0-9]\+\).md"/"#\1"/' ${{ env.target-file }}
+
+      - name: Convert source
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: ${{ env.working-directory }}/${{ env.source-directory }}/${{ env.interim-file }}
+          output: ${{ env.working-directory }}/${{ env.source-directory }}/${{ env.target-file }}
+
+      - name: Manipulate source
+        working-directory: ${{ env.working-directory }}/${{ env.source-directory }}
+        run: |
+          sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
+          sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
 
       - name: Commit
         run: |
