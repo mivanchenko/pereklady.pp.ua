@@ -1,11 +1,11 @@
 @font-face {
-	font-family: customFont;
-	src: url(/fonts/AdonisC.ttf);
+	font-family: "custom";
+	src: local("AdonisC"), url("/fonts/AdonisC.ttf");
 }
 
 body {
 	color: #444;
-	font-family: customFont, "PT Serif", Georgia, Times, "Times New Roman", serif;
+	font-family: "custom", "PT Serif", Georgia, Times, "Times New Roman", serif;
 	font-size: 1.15em;
 	margin: 1rem;
 }
