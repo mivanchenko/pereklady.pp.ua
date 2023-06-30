@@ -41,7 +41,7 @@ jobs:
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
           sed -i -e 's/"\([0-9]\+\).md"/"#\1"/' ${{ env.target-file }}
-          sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}"></head>|' ${{ env.target-file }}
+          sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
 
       - name: Convert source
