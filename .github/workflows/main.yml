@@ -6,7 +6,7 @@ on:
     - main
 
 jobs:
-  convert-to-html:
+  convert-ddt-to-html:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
     env:
@@ -65,3 +65,31 @@ jobs:
           git add .
           git commit -m 'Convert Markdown to HTML' --no-verify
           git push
+
+  convert-tools-to-html:
+    name: Convert /tools to HTML
+    runs-on: ubuntu-latest
+    env:
+      source-file: index.md
+      target-file: index.html
+      css-path: /css/main.css
+      font-family: custom
+      working-directory: ./tools/
+      dir1: links
+      dir2: wordships
+#      source-directory: source
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Convert
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: ${{ env.working-directory }}/${{ env.dir1 }}/${{ env.source-file }}
+          output: ${{ env.working-directory }}/${{ env.dir1 }}/${{ env.target-file }}
+
+      - name: Convert
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: ${{ env.working-directory }}/${{ env.dir2 }}/${{ env.source-file }}
+          output: ${{ env.working-directory }}/${{ env.dir2 }}/${{ env.target-file }}
