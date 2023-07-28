@@ -20,9 +20,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Pull
-        run: git pull --rebase
-
       - name: Concatenate the markdowns
         working-directory: ${{ env.working-directory }}
         run: |
@@ -67,6 +64,7 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m 'Convert /books/ddt to HTML' --no-verify
+          git pull --rebase
           git push
 
   convert-tools-to-html:
@@ -83,9 +81,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Pull
-        run: git pull --rebase
 
       - name: Convert dir1
         uses: jaywcjlove/markdown-to-html-cli@main
@@ -124,4 +119,5 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m 'Convert /tools to HTML' --no-verify
+          git pull --rebase
           git push
