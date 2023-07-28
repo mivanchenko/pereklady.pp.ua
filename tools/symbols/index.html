@@ -121,24 +121,6 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
     <table class="inlineTable">
-    <tr><td><span>
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" viewBox="0 0 100 100">
-            <defs>
-            <filter id="outline-indigo">
-            <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="3"></feMorphology>
-            <feFlood flood-color="indigo" result="indi"></feFlood>
-            <feComposite in="indi" in2="expanded" operator="in"></feComposite>
-            <feComposite in="SourceGraphic"></feComposite>
-            </filter>
-            <clipPath id="emojiClipPath">
-            <text filter="url(#filter)" x="35" y="95" font-family="Georgia" font-weight="bold" font-size="6em" fill="#000000">Ї</text>
-            </clipPath>
-            </defs>
-            <g filter="url(#outline-indigo)">
-            <rect y="0" width="100" height="100" fill="yellow" clip-path="url(#emojiClipPath)"></rect>
-            </g>
-        </svg>
-    </span></td><td><button></button></td></tr>
     <tr><td><span>а́</span></td><td><button></button></td></tr>
     <tr><td><span>е́</span></td><td><button></button></td></tr>
     <tr><td><span>є́</span></td><td><button></button></td></tr>
