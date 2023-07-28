@@ -15,28 +15,28 @@ jobs:
       target-file: index.html
       css-path: /css/main.css
       font-family: custom
-      working-directory-1: ./books/ddt
-      working-directory-2: ./tools/links
-      working-directory-3: ./tools/wordships
+      dir-books-1: ./books/ddt
+      dir-tools-1: ./tools/links
+      dir-tools-2: ./tools/wordships
       source-directory: source
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Concatenate the markdowns
-        working-directory: ${{ env.working-directory-1 }}
+      - name: Concatenate the markdowns of ${{ env.dir-books-1 }}
+        working-directory: ${{ env.dir-books-1 }}
         run: |
           ls [0-9]*.md | cut -f1 | sort -u | xargs cat > ${{ env.interim-file }}
 
-      - name: Convert
+      - name: Convert ${{ env.dir-books-1 }}
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: ${{ env.working-directory-1 }}/${{ env.interim-file }}
-          output: ${{ env.working-directory-1 }}/${{ env.target-file }}
-          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>UA</text></svg>
+          source: ${{ env.dir-books-1 }}/${{ env.interim-file }}
+          output: ${{ env.dir-books-1 }}/${{ env.target-file }}
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ї</text></svg>
 
-      - name: Manipulate
-        working-directory: ${{ env.working-directory-1 }}
+      - name: Manipulate ${{ env.dir-books-1 }}
+        working-directory: ${{ env.dir-books-1 }}
         run: |
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
@@ -45,27 +45,28 @@ jobs:
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
-      - name: Convert source
+      - name: Convert source of ${{ env.dir-books-1 }}
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: ${{ env.working-directory-1 }}/${{ env.source-directory }}/${{ env.interim-file }}
-          output: ${{ env.working-directory-1 }}/${{ env.source-directory }}/${{ env.target-file }}
+          source: ${{ env.dir-books-1 }}/${{ env.source-directory }}/${{ env.interim-file }}
+          output: ${{ env.dir-books-1 }}/${{ env.source-directory }}/${{ env.target-file }}
 
-      - name: Manipulate source
-        working-directory: ${{ env.working-directory-1 }}/${{ env.source-directory }}
+      - name: Manipulate source of ${{ env.dir-books-1 }}
+        working-directory: ${{ env.dir-books-1 }}/${{ env.source-directory }}
         run: |
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
 
 
-      - name: Convert ${{ env.working-directory-2 }}
+      - name: Convert ${{ env.dir-tools-1 }}
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: ${{ env.working-directory-2 }}/${{ env.source-file }}
-          output: ${{ env.working-directory-2 }}/${{ env.target-file }}
+          source: ${{ env.dir-tools-1 }}/${{ env.source-file }}
+          output: ${{ env.dir-tools-1 }}/${{ env.target-file }}
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ї</text></svg>
 
-      - name: Manipulate ${{ env.working-directory-2 }}
-        working-directory: ${{ env.working-directory-2 }}
+      - name: Manipulate ${{ env.dir-tools-1 }}
+        working-directory: ${{ env.dir-tools-1 }}
         run: |
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
@@ -74,14 +75,15 @@ jobs:
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
 
-      - name: Convert ${{ env.working-directory-3 }}
+      - name: Convert ${{ env.dir-tools-2 }}
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: ${{ env.working-directory-3 }}/${{ env.source-file }}
-          output: ${{ env.working-directory-3 }}/${{ env.target-file }}
+          source: ${{ env.dir-tools-2 }}/${{ env.source-file }}
+          output: ${{ env.dir-tools-2 }}/${{ env.target-file }}
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ї</text></svg>
 
-      - name: Manipulate ${{ env.working-directory-3 }}
-        working-directory: ${{ env.working-directory-3 }}
+      - name: Manipulate ${{ env.dir-tools-2 }}
+        working-directory: ${{ env.dir-tools-2 }}
         run: |
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
