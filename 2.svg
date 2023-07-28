@@ -1,8 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <text y=".9em" font-size="90">ї</text>
-</svg>
-
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" viewBox="0 -30 157 140">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" viewBox="0 0 100 100">
 <defs>
 <filter id="outline-indigo">
 <feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="3"></feMorphology>
@@ -11,13 +7,10 @@
 <feComposite in="SourceGraphic"></feComposite>
 </filter>
 <clipPath id="emojiClipPath">
-<text filter="url(#filter)" x="50" y="105" font-family="Georgia" font-weight="bold" font-size="12em" fill="#000000">Ї</text>
+<text filter="url(#filter)" x="32" y="95" font-family="Georgia" font-weight="bold" font-size="8em" fill="#000000">Ї</text>
 </clipPath>
 </defs>
 <g filter="url(#outline-indigo)">
-<rect y="-30" width="157" height="140" fill="yellow" clip-path="url(#emojiClipPath)"></rect>
+<rect y="0" width="100" height="100" fill="yellow" clip-path="url(#emojiClipPath)"></rect>
 </g>
 </svg>
-
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="outline-indigo"><feMorphology in="SourceAlpha" result="expanded" operator="dilate" radius="3"></feMorphology><feFlood flood-color="indigo" result="indi"></feFlood>    <feComposite in="indi" in2="expanded" operator="in"></feComposite>    <feComposite in="SourceGraphic"></feComposite></filter><clipPath id="emojiClipPath">    <text filter="url(#filter)" x="50" y="105" font-family="Georgia" font-weight="bold" font-size="12em" fill="#000000">Ї</text></clipPath></defs><g filter="url(#outline-indigo)"><rect y="-30" width="157" height="140" fill="yellow" clip-path="url(#emojiClipPath)"></rect></g></svg>
