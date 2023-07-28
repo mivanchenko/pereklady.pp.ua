@@ -63,18 +63,6 @@ jobs:
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
-      - name: Convert source of ${{ env.dir-books-1 }}
-        uses: jaywcjlove/markdown-to-html-cli@main
-        with:
-          source: ${{ env.dir-books-1 }}/${{ env.source-directory }}/${{ env.interim-file }}
-          output: ${{ env.dir-books-1 }}/${{ env.source-directory }}/${{ env.target-file }}
-
-      - name: Manipulate source of ${{ env.dir-books-1 }}
-        working-directory: ${{ env.dir-books-1 }}/${{ env.source-directory }}
-        run: |
-          sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
-          sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
-
 
       - name: Convert ${{ env.dir-tools-1 }}
         uses: jaywcjlove/markdown-to-html-cli@main
