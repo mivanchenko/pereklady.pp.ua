@@ -1,26 +1,24 @@
 # Посилання
 
-## Для перекладу
-
-### Перекладачі
+## Перекладачі
 
 <https://www.deepl.com/uk/translator>
 
 https://translate.google.com/?sl=ru&tl=uk&op=translate
 
-### Довідники
+## Довідники
 
 http://sum.in.ua/
 
 http://emlab.ho.ua/Service----/Slovnyk_typovyh_pomylok_mod.html
 
-### Коректори
+## Коректори
 
 https://languagetool.org/uk
 
 https://onlinecorrector.com.ua/uk/
 
-## Для публікації
+## Публікації
 
 https://findbook.in.ua/
 
