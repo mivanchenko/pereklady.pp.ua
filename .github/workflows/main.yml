@@ -10,7 +10,7 @@ jobs:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
     env:
-      favicon: /images/favicon.ico
+      favicon: /images/ji.png
       source-file: index.md
       interim-file: index.md
       target-file: index.html
