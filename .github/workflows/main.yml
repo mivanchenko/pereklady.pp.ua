@@ -15,6 +15,7 @@ jobs:
       target-file: index.html
       css-path: /css/main.css
       font-family: custom
+      dir-main: ./
       dir-books-1: ./books/ddt
       dir-tools-1: ./tools/links
       dir-tools-2: ./tools/wordships
@@ -22,6 +23,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Convert ${{ env.dir-main }}
+        uses: jaywcjlove/markdown-to-html-cli@main
+        with:
+          source: ${{ env.dir-main }}/${{ env.source-file }}
+          output: ${{ env.dir-main }}/${{ env.target-file }}
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ї</text></svg>
+
+      - name: Manipulate ${{ env.dir-main }}
+        working-directory: ${{ env.dir-main }}
+        run: |
+          sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
+          sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
+          sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}">\n</head>|' ${{ env.target-file }}
+          sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
+          sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
+
 
       - name: Concatenate the markdowns of ${{ env.dir-books-1 }}
         working-directory: ${{ env.dir-books-1 }}
