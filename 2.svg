@@ -7,7 +7,7 @@
 <feComposite in="SourceGraphic"></feComposite>
 </filter>
 <clipPath id="emojiClipPath">
-<text filter="url(#filter)" x="32" y="95" font-family="Georgia" font-weight="bold" font-size="8em" fill="#000000">Ї</text>
+<text filter="url(#filter)" x="35" y="95" font-family="Georgia" font-weight="bold" font-size="6em" fill="#000000">Ї</text>
 </clipPath>
 </defs>
 <g filter="url(#outline-indigo)">
