@@ -10,6 +10,7 @@ jobs:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
     env:
+      favicon: ./images/ji.svg
       source-file: index.md
       interim-file: index.md
       target-file: index.html
@@ -29,7 +30,7 @@ jobs:
         with:
           source: ${{ env.dir-main }}/${{ env.source-file }}
           output: ${{ env.dir-main }}/${{ env.target-file }}
-          favicon: ./2.svg
+          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-main }}
         working-directory: ${{ env.dir-main }}
@@ -51,7 +52,7 @@ jobs:
         with:
           source: ${{ env.dir-books-1 }}/${{ env.interim-file }}
           output: ${{ env.dir-books-1 }}/${{ env.target-file }}
-          favicon: data:image/svg+xml,<svg version=%221.1%22 xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 width=%22100%22 viewBox=%220 0 100 100%22><defs><filter id=%22outline-indigo%22><feMorphology in=%22SourceAlpha%22 result=%22expanded%22 operator=%22dilate%22 radius=%223%22></feMorphology><feFlood flood-color=%22indigo%22 result=%22indi%22></feFlood><feComposite in=%22indi%22 in2=%22expanded%22 operator=%22in%22></feComposite><feComposite in=%22SourceGraphic%22></feComposite></filter><clipPath id=%22emojiClipPath%22><text filter=%22url(#filter)%22 x=%2235%22 y=%2295%22 font-family=%22Georgia%22 font-weight=%22bold%22 font-size=%226em%22 fill=%22#000000%22>Ї</text></clipPath></defs><g filter=%22url(#outline-indigo)%22><rect y=%220%22 width=%22100%22 height=%22100%22 fill=%22yellow%22 clip-path=%22url(#emojiClipPath)%22></rect></g></svg>
+          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-books-1 }}
         working-directory: ${{ env.dir-books-1 }}
@@ -69,7 +70,7 @@ jobs:
         with:
           source: ${{ env.dir-tools-1 }}/${{ env.source-file }}
           output: ${{ env.dir-tools-1 }}/${{ env.target-file }}
-          favicon: data:image/svg+xml,<svg version=%221.1%22 xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 width=%22100%22 viewBox=%220 0 100 100%22><defs><filter id=%22outline-indigo%22><feMorphology in=%22SourceAlpha%22 result=%22expanded%22 operator=%22dilate%22 radius=%223%22></feMorphology><feFlood flood-color=%22indigo%22 result=%22indi%22></feFlood><feComposite in=%22indi%22 in2=%22expanded%22 operator=%22in%22></feComposite><feComposite in=%22SourceGraphic%22></feComposite></filter><clipPath id=%22emojiClipPath%22><text filter=%22url(#filter)%22 x=%2235%22 y=%2295%22 font-family=%22Georgia%22 font-weight=%22bold%22 font-size=%226em%22 fill=%22#000000%22>Ї</text></clipPath></defs><g filter=%22url(#outline-indigo)%22><rect y=%220%22 width=%22100%22 height=%22100%22 fill=%22yellow%22 clip-path=%22url(#emojiClipPath)%22></rect></g></svg>
+          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-tools-1 }}
         working-directory: ${{ env.dir-tools-1 }}
@@ -86,7 +87,7 @@ jobs:
         with:
           source: ${{ env.dir-tools-2 }}/${{ env.source-file }}
           output: ${{ env.dir-tools-2 }}/${{ env.target-file }}
-          favicon: data:image/svg+xml,<svg version=%221.1%22 xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 width=%22100%22 viewBox=%220 0 100 100%22><defs><filter id=%22outline-indigo%22><feMorphology in=%22SourceAlpha%22 result=%22expanded%22 operator=%22dilate%22 radius=%223%22></feMorphology><feFlood flood-color=%22indigo%22 result=%22indi%22></feFlood><feComposite in=%22indi%22 in2=%22expanded%22 operator=%22in%22></feComposite><feComposite in=%22SourceGraphic%22></feComposite></filter><clipPath id=%22emojiClipPath%22><text filter=%22url(#filter)%22 x=%2235%22 y=%2295%22 font-family=%22Georgia%22 font-weight=%22bold%22 font-size=%226em%22 fill=%22#000000%22>Ї</text></clipPath></defs><g filter=%22url(#outline-indigo)%22><rect y=%220%22 width=%22100%22 height=%22100%22 fill=%22yellow%22 clip-path=%22url(#emojiClipPath)%22></rect></g></svg>
+          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-tools-2 }}
         working-directory: ${{ env.dir-tools-2 }}
