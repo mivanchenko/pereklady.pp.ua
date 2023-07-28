@@ -20,6 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Pull
+        run: git pull --rebase
+
       - name: Concatenate the markdowns
         working-directory: ${{ env.working-directory }}
         run: |
