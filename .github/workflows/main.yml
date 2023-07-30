@@ -10,7 +10,7 @@ jobs:
     name: Convert Markdown to HTML
     runs-on: ubuntu-latest
     env:
-      favicon: /images/ji.png
+      favicon: /images/ji.svg
       source-file: index.md
       interim-file: index.md
       target-file: index.html
@@ -53,7 +53,6 @@ jobs:
         with:
           source: ${{ env.dir-books-1 }}/${{ env.interim-file }}
           output: ${{ env.dir-books-1 }}/${{ env.target-file }}
-          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-books-1 }}
         working-directory: ${{ env.dir-books-1 }}
@@ -62,6 +61,7 @@ jobs:
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
           sed -i -e 's/"\([0-9]\+\).md"/"#\1"/' ${{ env.target-file }}
           sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}">\n</head>|' ${{ env.target-file }}
+          sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
@@ -71,7 +71,6 @@ jobs:
         with:
           source: ${{ env.dir-tools-1 }}/${{ env.source-file }}
           output: ${{ env.dir-tools-1 }}/${{ env.target-file }}
-          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-tools-1 }}
         working-directory: ${{ env.dir-tools-1 }}
@@ -79,6 +78,7 @@ jobs:
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
           sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}">\n</head>|' ${{ env.target-file }}
+          sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
@@ -88,7 +88,6 @@ jobs:
         with:
           source: ${{ env.dir-tools-2 }}/${{ env.source-file }}
           output: ${{ env.dir-tools-2 }}/${{ env.target-file }}
-          favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-tools-2 }}
         working-directory: ${{ env.dir-tools-2 }}
@@ -96,6 +95,7 @@ jobs:
           sed -i -e 's/dark="Dark"/dark=""/' ${{ env.target-file }}
           sed -i -e 's/light="Light"/light=""/' ${{ env.target-file }}
           sed -i -e 's|</head>|\n    <link rel="stylesheet" href="${{ env.css-path }}">\n</head>|' ${{ env.target-file }}
+          sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
 
