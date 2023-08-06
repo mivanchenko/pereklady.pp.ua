@@ -66,7 +66,7 @@ jobs:
           sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
-          sed -i -e 's|</body>|\n    <script src="${{ env.books-script-path }}">\n</body>|' ${{ env.target-file }}
+          sed -i -e 's|</body>|\n    <script src="${{ env.books-script-path }}"></script>\n</body>|' ${{ env.target-file }}
 
 
       - name: Convert ${{ env.dir-tools-1 }}
