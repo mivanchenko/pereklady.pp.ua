@@ -17,6 +17,7 @@ jobs:
       css-path: /css/main.css
       font-family: custom
       dir-main: ./
+      books-script-path: /books/script.js
       dir-books-1: ./books/ddt
       dir-tools-1: ./tools/links
       dir-tools-2: ./tools/wordships
@@ -28,8 +29,8 @@ jobs:
       - name: Convert ${{ env.dir-main }}
         uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: ${{ env.dir-main }}/${{ env.source-file }}
-          output: ${{ env.dir-main }}/${{ env.target-file }}
+          source: ${{ env.dir-main }}${{ env.source-file }}
+          output: ${{ env.dir-main }}${{ env.target-file }}
           favicon: ${{ env.favicon }}
 
       - name: Manipulate ${{ env.dir-main }}
@@ -65,6 +66,7 @@ jobs:
           sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
+          sed -i -e 's|</body>|\n    <script src="${{ env.books-script-path }}">\n</body>|' ${{ env.target-file }}
 
 
       - name: Convert ${{ env.dir-tools-1 }}
