@@ -5,7 +5,8 @@
     return;
   }
 
-  let haystack = document.body.textContent;
+//  let haystack = document.body.textContent;
+  let haystack = 'У першу чергу я зайшов сюди, це у першу чергу, а в першу чергу ні, у першу чергу.';
 
   let mistakesFound = false;
   let mistakes = await getMistakes('/api/mistakes.json');
@@ -19,12 +20,21 @@
     let needle = mistake.wrong.copy.replace(/\s+/g, '\\s+');
     let needleRegexp = new RegExp(needle, 'gi');
     let matches = haystack.match(needleRegexp);
-    if (matches) {
-      if (!mistakesFound) {
-        logg('\u2718 Mistakes found:');
-        mistakesFound = true;
-      }
-      logg(`(${matches.length}) [${mistake.wrong.copy}]: ${mistake.right.join(', ')}`);
+    if (!matches) {
+      continue;
+    }
+    if (!mistakesFound) {
+      logg('\u2718 Mistakes found:');
+      mistakesFound = true;
+    }
+    let allMatches = {};
+    for (let match of matches) {
+      allMatches[match] ||= 0;
+      allMatches[match] += 1;
+    }
+    let uniqueMatches = [...new Set(matches)];
+    for (let uniqueMatch of uniqueMatches) {
+      logg(`(${allMatches[uniqueMatch]}) [${uniqueMatch}]: ${mistake.right.join(', ')}`);
     }
   }
 
