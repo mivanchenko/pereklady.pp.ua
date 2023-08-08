@@ -6,7 +6,7 @@
   }
 
   let haystack = document.body.textContent;
-//  let haystack = 'У першу чергу я зайшов сюди, це у першу чергу, а в першу чергу ні, у першу чергу.';
+//  let haystack = 'У першу чергу, це не в першу чергу, а в першу чергу ні, а у першу чергу';
 
   let firstFinding = true;
   let mistakes = await getMistakes('/api/mistakes.json');
@@ -47,7 +47,8 @@
   }
 
   function findMistake(mistake, haystack) {
-    let needleRegexp = prepareNeedle(mistake);
+    let needle = prepareNeedle(mistake);
+    let needleRegexp = new RegExp(needle, 'gi');
     let matches = haystack.match(needleRegexp);
     if (!matches) {
       return false;
@@ -56,9 +57,17 @@
   }
 
   function prepareNeedle(mistake) {
-      let needle = mistake.wrong.copy.replace(/\s+/g, '\\s+');
-      let needleRegexp = new RegExp(needle, 'gi');
-      return needleRegexp;
+    let needle = mistake.wrong.copy;
+    needle = needle.replace(/^в /, '(в|у) ');
+    needle = needle.replace(/ в /, ' (в|у) ');
+    needle = needle.replace(/^у /, '(в|у) ');
+    needle = needle.replace(/ у /, ' (в|у) ');
+    needle = needle.replace(/^і /, '(і|й) ');
+    needle = needle.replace(/ і /, ' (і|й) ');
+    needle = needle.replace(/^й /, '(і|й) ');
+    needle = needle.replace(/ й /, ' (і|й) ');
+    needle = needle.replace(/\s+/g, '\\s+');
+    return needle;
   }
 
   function showStats(mistake, matches) {
