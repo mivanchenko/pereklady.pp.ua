@@ -40,9 +40,6 @@
     if (!mistake || !mistake.wrong || !mistake.right) {
       return false;
     }
-    if (!mistake.wrong.copy || !mistake.right.length) {
-      return false;
-    }
     return true;
   }
 
@@ -57,7 +54,7 @@
   }
 
   function prepareNeedle(mistake) {
-    let needle = mistake.wrong.copy;
+    let needle = mistake.wrong;
     needle = needle.replace(/^в /, '(в|у) ');
     needle = needle.replace(/ в /, ' (в|у) ');
     needle = needle.replace(/^у /, '(в|у) ');
@@ -78,7 +75,7 @@
     }
     let uniqueMatches = [...new Set(matches)];
     for (let uniqueMatch of uniqueMatches) {
-      logg(`(${allMatches[uniqueMatch]}) [${uniqueMatch}]: ${mistake.right.join(', ')}`);
+      logg(`(${allMatches[uniqueMatch]}) [${uniqueMatch}]: ${mistake.right}`);
     }
   }
 
