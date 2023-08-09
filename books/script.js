@@ -1,12 +1,11 @@
 (async function() {
-  // ensure ?spellcheck=true
+  // ensure ?check is in URL
   let params = new URL(document.location).searchParams;
-  if (params.get('spellcheck') !== 'true') {
+  if (params.get('check') !== null) {
     return;
   }
 
   let haystack = document.body.textContent;
-//  let haystack = 'У першу чергу, це не в першу чергу, а в першу чергу ні, а у першу чергу';
 
   let firstFinding = true;
   let mistakes = await getMistakes('/api/mistakes.json');
