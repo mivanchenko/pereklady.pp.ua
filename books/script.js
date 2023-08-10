@@ -1,14 +1,17 @@
 (async function() {
   // ensure ?check is in URL
-  let params = new URL(document.location).searchParams;
-  if (params.get('check') !== null) {
-    return;
-  }
+//  let params = new URL(document.location).searchParams;
+//  if (params.get('check') === null) {
+//    return;
+//  }
 
   let haystack = document.body.textContent;
+  haystack = haystack.replace(/(^|\s+|$)/g, ' ');
+
+  let mistakes = await getMistakes('/api/mistakes-farion.json');
+//  let mistakes = await getMistakes('/api/mistakes-test.json');
 
   let firstFinding = true;
-  let mistakes = await getMistakes('/api/mistakes.json');
   for (let mistake of mistakes) {
     if (!isMistakeEligible(mistake)) {
       continue;
@@ -53,16 +56,9 @@
   }
 
   function prepareNeedle(mistake) {
-    let needle = mistake.wrong;
-    needle = needle.replace(/^в /, '(в|у) ');
-    needle = needle.replace(/ в /, ' (в|у) ');
-    needle = needle.replace(/^у /, '(в|у) ');
-    needle = needle.replace(/ у /, ' (в|у) ');
-    needle = needle.replace(/^і /, '(і|й) ');
-    needle = needle.replace(/ і /, ' (і|й) ');
-    needle = needle.replace(/^й /, '(і|й) ');
-    needle = needle.replace(/ й /, ' (і|й) ');
-    needle = needle.replace(/\s+/g, '\\s+');
+    let needle = ` ${mistake.wrong} `;
+    needle = needle.replace(/ (в|у) /, ' (в|у) ');
+    needle = needle.replace(/ (і|й) /, ' (і|й) ');
     return needle;
   }
 
