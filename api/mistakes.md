@@ -3,7 +3,7 @@ The format should be the following:
 [
   {
     "wrong": string,
-    "variate": boolean,
+    "inside": boolean,  // if the [wrong] part can be inside the word
     "right": string
   },
   ...
