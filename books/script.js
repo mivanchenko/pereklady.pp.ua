@@ -9,8 +9,8 @@
 //  haystack = 'матеріял: вилита матеріялізмом.';
   haystack = haystack.replace(/(^|\s+|$)/g, ' ');
 
-  let mistakes = await getMistakes('/api/mistakes-farion.json');
-//  let mistakes = await getMistakes('/api/mistakes-test.json');
+//  let mistakes = await getMistakes('/api/mistakes-farion.json');
+  let mistakes = await getMistakes('/api/mistakes-test.json');
 
   let firstFinding = true;
   for (let mistake of mistakes) {
@@ -57,8 +57,8 @@
   }
 
   function prepareNeedle(mistake) {
-    let variate = mistake.variate ? '\\S*' : '';
-    let needle = ` ${variate}${mistake.wrong}${variate} `;
+    let wrap = mistake.inside ? '\\S*' : '';
+    let needle = ` ${wrap}${mistake.wrong}${wrap} `;
     needle = needle.replace(/ (в|у) /, ' (в|у) ');
     needle = needle.replace(/ (і|й) /, ' (і|й) ');
     return needle;

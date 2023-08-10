@@ -1,7 +1,7 @@
 [
   {
     "wrong": "матеріял",
-    "variate": false,
+    "inside": true,
     "right": "asdf"
   }
 ]
