@@ -1,6 +1,7 @@
 [
   {
-    "wrong": "душа",
+    "wrong": "матеріял",
+    "variate": false,
     "right": "asdf"
   }
 ]

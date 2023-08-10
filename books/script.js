@@ -6,6 +6,7 @@
 //  }
 
   let haystack = document.body.textContent;
+//  haystack = 'матеріял: вилита матеріялізмом.';
   haystack = haystack.replace(/(^|\s+|$)/g, ' ');
 
   let mistakes = await getMistakes('/api/mistakes-farion.json');
@@ -56,7 +57,8 @@
   }
 
   function prepareNeedle(mistake) {
-    let needle = ` ${mistake.wrong} `;
+    let variate = mistake.variate ? '\\S*' : '';
+    let needle = ` ${variate}${mistake.wrong}${variate} `;
     needle = needle.replace(/ (в|у) /, ' (в|у) ');
     needle = needle.replace(/ (і|й) /, ' (і|й) ');
     return needle;

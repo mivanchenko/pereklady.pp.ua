@@ -2,8 +2,9 @@ The format should be the following:
 ```js
 [
   {
-    "wrong": "",
-    "right": ""
+    "wrong": string,
+    "variate": boolean,
+    "right": string
   },
   ...
 ]
