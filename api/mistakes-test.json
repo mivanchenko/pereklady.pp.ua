@@ -1,7 +1,6 @@
 [
   {
-    "wrong": "матеріял",
-    "inside": true,
-    "right": "asdf"
+    "wrong": "матеріял*",
+    "right": "test"
   }
 ]

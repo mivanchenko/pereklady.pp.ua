@@ -57,10 +57,10 @@
   }
 
   function prepareNeedle(mistake) {
-    let wrap = mistake.inside ? '\\S*' : '';
-    let needle = ` ${wrap}${mistake.wrong}${wrap} `;
+    let needle = ` ${mistake.wrong} `;
     needle = needle.replace(/ (в|у) /, ' (в|у) ');
     needle = needle.replace(/ (і|й) /, ' (і|й) ');
+    needle = needle.replace('*', '\\S*');
     return needle;
   }
 

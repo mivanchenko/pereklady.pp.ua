@@ -3,9 +3,19 @@ The format should be the following:
 [
   {
     "wrong": string,
-    "inside": boolean,  // if the [wrong] part can be inside the word
     "right": string
   },
   ...
+]
+```
+
+For example,
+
+```js
+[
+  {
+    "wrong": "матеріял*",  // can contain *, which means non-space
+    "right": "asdf"
+  }
 ]
 ```
