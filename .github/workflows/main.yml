@@ -17,7 +17,7 @@ jobs:
       css-path: /css/main.css
       font-family: custom
       dir-main: ./
-      books-script-path: /books/script.js
+      books-script-path: /books/script-loader.js
       dir-books-1: ./books/ddt
       dir-tools-1: ./tools/links
       dir-tools-2: ./tools/wordships
