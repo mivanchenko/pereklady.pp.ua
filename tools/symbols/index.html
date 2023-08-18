@@ -1,35 +1,21 @@
 <!doctype html><html lang="en">
 <head>
-    <title>Символи</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="icon" href="/images/ji.png" type="image/x-icon">
-    <style>
-		td {
-			padding-left: 5px;
-			padding-bottom: 5px;
-			/* border-style: solid; */
-			border-width: 1px;
-			border-color: green;
-			padding: 3px 0;
-			text-align: center;
-		}
-		span {
-			height: auto;
-			position: relative;
-			/* float: left; */
-			vertical-align: middle;
-			text-align: center;
-			margin-right: 3px;
-		}
-		button {
-			float: left;
-			vertical-align: middle;
-		}
-		.inlineTable {
-            display: inline-block;
-			width: 20%;
-        }
-	</style>
+  <title>Символи</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/images/ji.png" type="image/x-icon">
+  <style>
+    td {
+      text-align: center;
+    }
+    td:hover {
+      background-color: #888;
+      color: #000;
+    }
+    .inlineTable {
+      display: inline-block;
+      width: 20%;
+    }
+  </style>
 </head><body>
 
 
@@ -52,9 +38,11 @@
   background-color: var(--color-theme-bg);
   color: var(--color-theme-text);
 }`;const i="_dark_mode_style_";const n=t.getElementById(i);if(!n){var c=t.createElement("style");c.id=i;c.textContent=o;t.head.appendChild(c)}var a=t.createElement("style");a.textContent=`
-    .wrapper { cursor: pointer; user-select: none; position: relative; }
-    .wrapper > span + span { margin-left: .4rem; }
-    `;s.appendChild(a)}i(t,e){this.dispatchEvent(new CustomEvent(t,{bubbles:true,composed:true,detail:e}))}}customElements.define("dark-mode",a);</script><script>const __TEMPLATE__ = document.createElement('template');
+  .wrapper { cursor: pointer; user-select: none; position: relative; }
+  .wrapper > span + span { margin-left: .4rem; }
+  `;s.appendChild(a)}i(t,e){this.dispatchEvent(new CustomEvent(t,{bubbles:true,composed:true,detail:e}))}}customElements.define("dark-mode",a);
+</script>
+<script>const __TEMPLATE__ = document.createElement('template');
 __TEMPLATE__.innerHTML = `
 <style>
 
@@ -80,115 +68,151 @@ markdown-style .octicon-video { border: 1px solid #d0d7de !important; border-rad
 <slot></slot>
 `;
 class MarkdownStyle extends HTMLElement {
-    constructor() {
-        super();
-        this.shadow = this.attachShadow({ mode: 'open' });
-        this.shadow.appendChild(__TEMPLATE__.content.cloneNode(true));
-        const style = Array.prototype.slice
-            .call(this.shadow.children)
-            .find((item) => item.tagName === 'STYLE');
-        if (style) {
-            const id = '__MARKDOWN_STYLE__';
-            const findStyle = document.getElementById(id);
-            if (!findStyle) {
-                style.id = id;
-                document.head.append(style);
-            }
-        }
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({ mode: 'open' });
+    this.shadow.appendChild(__TEMPLATE__.content.cloneNode(true));
+    const style = Array.prototype.slice
+      .call(this.shadow.children)
+      .find((item) => item.tagName === 'STYLE');
+    if (style) {
+      const id = '__MARKDOWN_STYLE__';
+      const findStyle = document.getElementById(id);
+      if (!findStyle) {
+        style.id = id;
+        document.head.append(style);
+      }
     }
-    get theme() {
-        const value = this.getAttribute('theme');
-        return value === null ? '' : value;
+  }
+  get theme() {
+    const value = this.getAttribute('theme');
+    return value === null ? '' : value;
+  }
+  set theme(name) {
+    this.setAttribute('theme', name);
+  }
+  connectedCallback() {
+    if (!this.theme) {
+      const { colorMode } = document.documentElement.dataset;
+      this.theme = colorMode;
+      const observer = new MutationObserver((mutationsList, observer) => {
+        this.theme = document.documentElement.dataset.colorMode;
+      });
+      observer.observe(document.documentElement, { attributes: true });
+      window.matchMedia('(prefers-color-scheme: light)').onchange = (event) => {
+        this.theme = event.matches ? 'light' : 'dark';
+      };
+      window.matchMedia('(prefers-color-scheme: dark)').onchange = (event) => {
+        this.theme = event.matches ? 'dark' : 'light';
+      };
     }
-    set theme(name) {
-        this.setAttribute('theme', name);
-    }
-    connectedCallback() {
-        if (!this.theme) {
-            const { colorMode } = document.documentElement.dataset;
-            this.theme = colorMode;
-            const observer = new MutationObserver((mutationsList, observer) => {
-                this.theme = document.documentElement.dataset.colorMode;
-            });
-            observer.observe(document.documentElement, { attributes: true });
-            window.matchMedia('(prefers-color-scheme: light)').onchange = (event) => {
-                this.theme = event.matches ? 'light' : 'dark';
-            };
-            window.matchMedia('(prefers-color-scheme: dark)').onchange = (event) => {
-                this.theme = event.matches ? 'dark' : 'light';
-            };
-        }
-    }
+  }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-    <table class="inlineTable">
-    <tr><td><span>а́</span></td><td><button></button></td></tr>
-    <tr><td><span>е́</span></td><td><button></button></td></tr>
-    <tr><td><span>є́</span></td><td><button></button></td></tr>
-    <tr><td><span>и́</span></td><td><button></button></td></tr>
-    <tr><td><span>і́</span></td><td><button></button></td></tr>
-    <tr><td><span>ї́</span></td><td><button></button></td></tr>
-    <tr><td><span>о́</span></td><td><button></button></td></tr>
-    <tr><td><span>у́</span></td><td><button></button></td></tr>
-    <tr><td><span>ю́</span></td><td><button></button></td></tr>
-    <tr><td><span>я́</span></td><td><button></button></td></tr>
-    </table>
-    <table class="inlineTable">
-    <tr><td><span>А́</span></td><td><button></button></td></tr>
-    <tr><td><span>Е́</span></td><td><button></button></td></tr>
-    <tr><td><span>Є́</span></td><td><button></button></td></tr>
-    <tr><td><span>И́</span></td><td><button></button></td></tr>
-    <tr><td><span>І́</span></td><td><button></button></td></tr>
-    <tr><td><span>Ї́</span></td><td><button></button></td></tr>
-    <tr><td><span>О́</span></td><td><button></button></td></tr>
-    <tr><td><span>У́</span></td><td><button></button></td></tr>
-    <tr><td><span>Ю́</span></td><td><button></button></td></tr>
-    <tr><td><span>Я́</span></td><td><button></button></td></tr>
-    </table>
-    <table class="inlineTable">
-    <tr><td><span>—</span></td><td><button></button></td></tr>
-    <tr><td><span>э</span></td><td><button></button></td></tr>
-    <tr><td><span>ы</span></td><td><button></button></td></tr>
-    <tr><td><span>«</span></td><td><button></button></td></tr>
-    <tr><td><span>»</span></td><td><button></button></td></tr>
-    </table>
-    
-    <script>
-    	let action_text = 'Скопіювати';
-    	let result_text = 'Скопійовано!';
-    
-    	document.querySelectorAll('tr').forEach(function(tr) {
-    		let curr_span = null;
-    		let curr_button = null;
-    		tr.querySelectorAll('span').forEach(function(span) {
-    			curr_span = span;
-    		});
-    		tr.querySelectorAll('button').forEach(function(button) {
-    			button.innerHTML = action_text;
-    			curr_button = button;
-    		});
-    		if ( curr_span && curr_button ) {
-    			listen(curr_span, curr_button, action_text, result_text);
-    		}
-    	});
+  <table class="inlineTable">
+    <tr>
+      <td>а́</td>
+    </tr>
+    <tr>
+      <td>е́</td>
+    </tr>
+    <tr>
+      <td>є́</td>
+    </tr>
+    <tr>
+      <td>и́</td>
+    </tr>
+    <tr>
+      <td>і́</td>
+    </tr>
+    <tr>
+      <td>ї́</td>
+    </tr>
+    <tr>
+      <td>о́</td>
+    </tr>
+    <tr>
+      <td>у́</td>
+    </tr>
+    <tr>
+      <td>ю́</td>
+    </tr>
+    <tr>
+      <td>я́</td>
+    </tr>
+  </table>
+  <table class="inlineTable">
+    <tr>
+      <td>А́</td>
+    </tr>
+    <tr>
+      <td>Е́</td>
+    </tr>
+    <tr>
+      <td>Є́</td>
+    </tr>
+    <tr>
+      <td>И́</td>
+    </tr>
+    <tr>
+      <td>І́</td>
+    </tr>
+    <tr>
+      <td>Ї́</td>
+    </tr>
+    <tr>
+      <td>О́</td>
+    </tr>
+    <tr>
+      <td>У́</td>
+    </tr>
+    <tr>
+      <td>Ю́</td>
+    </tr>
+    <tr>
+      <td>Я́</td>
+    </tr>
+  </table>
+  <table class="inlineTable">
+    <tr>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>э</td>
+    </tr>
+    <tr>
+      <td>ы</td>
+    </tr>
+    <tr>
+      <td>«</td>
+    </tr>
+    <tr>
+      <td>»</td>
+    </tr>
+  </table>
 
-    	function listen (span, button, action_text, result_text) {
-    		button.addEventListener('click', function(event) {
-    		    var copyText = document.createElement('input');
-                copyText.setAttribute('type', 'text');
-                copyText.setAttribute('value', span.innerHTML);
-                copyText.select();
-                copyText.setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(copyText.value);
-                copyText.remove();
-                button.innerHTML = result_text;
-				setTimeout(function(){
-					button.innerHTML = action_text;
-				}, 1000);
-    		});
-    	}
-    </script>
-    <style>markdown-style pre .copied {
+  <script>
+    document.querySelectorAll('tr > td').forEach(function(td) {
+      let sym = td.textContent;
+    });
+
+    function listen (span, button, action_text, result_text) {
+      button.addEventListener('click', function(event) {
+        var copyText = document.createElement('input');
+        copyText.setAttribute('type', 'text');
+        copyText.setAttribute('value', span.innerHTML);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        copyText.remove();
+        button.innerHTML = result_text;
+        setTimeout(function(){
+          button.innerHTML = action_text;
+        }, 1000);
+      });
+    }
+  </script>
+  <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
   cursor: pointer;
@@ -233,9 +257,9 @@ markdown-style pre .active .octicon-check {
 function copied(target, str) {
   target.classList.add('active');
   copyTextToClipboard(target.dataset.code, function() {
-    setTimeout(() => {
-      target.classList.remove('active');
-    }, 2000);
+  setTimeout(() => {
+    target.classList.remove('active');
+  }, 2000);
   });
 }</script></markdown-style>
 </body>
