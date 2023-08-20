@@ -1,6 +1,6 @@
 console.log('ok');
 (async function() {
-  let mistakes = await getMistakes('/api/mistakes-test.json');
+  let mistakes = await getMistakes('https://pereklady.pp.ua/api/mistakes-test.json');
   logg(mistakes);
 
   async function getMistakes(file) {
