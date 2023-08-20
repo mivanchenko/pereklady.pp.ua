@@ -1,9 +1,5 @@
 (async function() {
-  let mistakes = await getMistakes('https://pereklady.pp.ua/api/mistakes-test.json');
-  console.log(mistakes);
-  async function getMistakes(file) {
-    let myObject = await fetch(file);
-    let mistakes = await myObject.json();
-    return mistakes;
-  }
+  let myObject = await fetch('https://pereklady.pp.ua/api/mistakes-test.json');
+  let mistakes = await myObject.json();
+  jsonp(mistakes);
 })();
