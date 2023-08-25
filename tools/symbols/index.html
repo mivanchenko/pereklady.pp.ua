@@ -207,13 +207,13 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
         let bgColor = elem.style.backgroundColor;
         let color = elem.style.color;
         elem.style.backgroundColor = 'green';
-        elem.style.textShadow = '1px 1px 1px';
+        elem.style.textShadow = '0px 0px 5px';
         elem.style.fontWeight = 'bold';
         let colors = ['blue', 'yellow'];
         let i = 0;
         let interval = setInterval(function(){
           elem.style.color = colors[i++ % 2];
-        }, 50);
+        }, 40);
         setTimeout(function(){
           clearInterval(interval);
           elem.style.backgroundColor = bgColor;
@@ -222,7 +222,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
           elem.style.textShadow = '';
           elem.blur();
           document.body.click();
-        }, 500);
+        }, 400);
       }
     });
   </script>
