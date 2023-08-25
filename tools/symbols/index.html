@@ -3,19 +3,6 @@
   <title>Символи</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="icon" href="/images/ji.png" type="image/x-icon">
-  <style>
-    td {
-      text-align: center;
-    }
-    td:hover {
-      background-color: #888;
-      color: #000;
-    }
-    .inlineTable {
-      display: inline-block;
-      width: 20%;
-    }
-  </style>
 </head><body>
 
 
@@ -111,38 +98,6 @@ class MarkdownStyle extends HTMLElement {
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
   <table class="inlineTable">
     <tr>
-      <td>а́</td>
-    </tr>
-    <tr>
-      <td>е́</td>
-    </tr>
-    <tr>
-      <td>є́</td>
-    </tr>
-    <tr>
-      <td>и́</td>
-    </tr>
-    <tr>
-      <td>і́</td>
-    </tr>
-    <tr>
-      <td>ї́</td>
-    </tr>
-    <tr>
-      <td>о́</td>
-    </tr>
-    <tr>
-      <td>у́</td>
-    </tr>
-    <tr>
-      <td>ю́</td>
-    </tr>
-    <tr>
-      <td>я́</td>
-    </tr>
-  </table>
-  <table class="inlineTable">
-    <tr>
       <td>А́</td>
     </tr>
     <tr>
@@ -175,6 +130,38 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   </table>
   <table class="inlineTable">
     <tr>
+      <td>а́</td>
+    </tr>
+    <tr>
+      <td>е́</td>
+    </tr>
+    <tr>
+      <td>є́</td>
+    </tr>
+    <tr>
+      <td>и́</td>
+    </tr>
+    <tr>
+      <td>і́</td>
+    </tr>
+    <tr>
+      <td>ї́</td>
+    </tr>
+    <tr>
+      <td>о́</td>
+    </tr>
+    <tr>
+      <td>у́</td>
+    </tr>
+    <tr>
+      <td>ю́</td>
+    </tr>
+    <tr>
+      <td>я́</td>
+    </tr>
+  </table>
+  <table class="inlineTable">
+    <tr>
       <td>—</td>
     </tr>
     <tr>
@@ -191,26 +178,42 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </table>
 
+  <style>
+    td {
+      font-family: monospace;
+      text-align: center;
+    }
+    td:hover {
+      background-color: #888;
+      color: #000;
+    }
+    .inlineTable {
+      border: 0px green solid;
+      display: inline-block;
+    }
+  </style>
   <script>
     document.querySelectorAll('tr > td').forEach(function(td) {
-      let sym = td.textContent;
-    });
-
-    function listen (span, button, action_text, result_text) {
-      button.addEventListener('click', function(event) {
+      td.addEventListener('click', function(event) {
         var copyText = document.createElement('input');
         copyText.setAttribute('type', 'text');
-        copyText.setAttribute('value', span.innerHTML);
+        copyText.setAttribute('value', td.innerText);
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
         copyText.remove();
-        button.innerHTML = result_text;
+
+        // TODO: action on "copied" event
+        // ...
+        console.log('copied');
+
         setTimeout(function(){
-          button.innerHTML = action_text;
+          // action on "copying ended" event
+          // button.innerHTML = action_text;
+          console.log('back to normal');
         }, 1000);
       });
-    }
+    });
   </script>
   <style>markdown-style pre .copied {
   display: flex;
