@@ -204,11 +204,19 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
         onCopied(td);
       });
       function onCopied(elem) {
-        let defaultColor = elem.style.backgroundColor;
+        let bgColor = elem.style.backgroundColor;
+        let color = elem.style.color;
         elem.style.backgroundColor = 'green';
+        let colors = ['black', 'white'];
+        let i = 0;
+        let interval = setInterval(function(){
+          elem.style.color = colors[i++ % 2];
+        }, 7);
         setTimeout(function(){
-          td.style.backgroundColor = defaultColor;
-        }, 1000);
+          clearInterval(interval);
+          elem.style.backgroundColor = bgColor;
+          elem.style.color = color;
+        }, 400);
       }
     });
   </script>
