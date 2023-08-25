@@ -179,17 +179,17 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   </table>
 
   <style>
-    td {
-      font-family: monospace;
-      text-align: center;
-    }
-    td:hover {
-      background-color: #888;
-      color: #000;
-    }
     .inlineTable {
       border: 0px green solid;
       display: inline-block;
+    }
+    .inlineTable td {
+      font-family: monospace;
+      text-align: center;
+    }
+    .inlineTable td:hover {
+      background-color: #888;
+      color: #000;
     }
   </style>
   <script>
@@ -202,17 +202,15 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
         copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
         copyText.remove();
-
-        // TODO: action on "copied" event
-        // ...
-        console.log('copied');
-
-        setTimeout(function(){
-          // action on "copying ended" event
-          // button.innerHTML = action_text;
-          console.log('back to normal');
-        }, 1000);
+        onCopied(td);
       });
+      function onCopied(elem) {
+        let defaultColor = elem.style.backgroundColor;
+        elem.style.backgroundColor = 'green';
+        setTimeout(function(){
+          td.style.backgroundColor = defaultColor;
+        }, 1000);
+      }
     });
   </script>
   <style>markdown-style pre .copied {
