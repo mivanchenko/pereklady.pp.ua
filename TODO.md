@@ -8,7 +8,3 @@ http://ukromova.blogspot.com/
 Mistakes found
 
 https://gamedev.dou.ua/forums/topic/44739/?from=comment-digest_topic
-
-## 3
-
-textContent > innerText

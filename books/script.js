@@ -5,7 +5,7 @@
 //    return;
 //  }
 
-  let haystack = document.body.textContent;
+  let haystack = document.body.innerText;
 //  haystack = 'матеріял: вилита матеріялізмом.';
   haystack = haystack.replace(/(^|\s+|$)/g, ' ');
 
