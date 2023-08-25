@@ -211,12 +211,13 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
         let i = 0;
         let interval = setInterval(function(){
           elem.style.color = colors[i++ % 2];
-        }, 7);
+        }, 10);
         setTimeout(function(){
           clearInterval(interval);
           elem.style.backgroundColor = bgColor;
           elem.style.color = color;
-        }, 400);
+          elem.blur();
+        }, 500);
       }
     });
   </script>
