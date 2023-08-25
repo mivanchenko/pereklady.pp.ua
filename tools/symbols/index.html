@@ -207,7 +207,9 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
         let bgColor = elem.style.backgroundColor;
         let color = elem.style.color;
         elem.style.backgroundColor = 'green';
-        let colors = ['black', 'white'];
+        elem.style.textShadow = '1px 1px 1px';
+        elem.style.fontWeight = 'bold';
+        let colors = ['blue', 'yellow'];
         let i = 0;
         let interval = setInterval(function(){
           elem.style.color = colors[i++ % 2];
@@ -216,6 +218,8 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
           clearInterval(interval);
           elem.style.backgroundColor = bgColor;
           elem.style.color = color;
+          elem.style.fontWeight = 'normal';
+          elem.style.textShadow = '';
           elem.blur();
           document.body.click();
         }, 500);
