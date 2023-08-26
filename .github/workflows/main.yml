@@ -17,11 +17,12 @@ jobs:
       css-path: /css/main.css
       font-family: custom
       dir-main: ./
+      dir-main-name: Переклади українською
       books-script-path: /books/mistakes-finder.js
       dir-books-1: ./books/ddt
       dir-books-1-name: Дух, душа, і тіло
       dir-tools-1: ./tools/links
-      dir-tools-2: ./tools/wordships
+      dir-tools-2: ./tools/mistakes
       source-directory: source
     steps:
       - name: Checkout
@@ -43,6 +44,7 @@ jobs:
           sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
+          sed -i -e 's|<head>|<title>${{ env.dir-main-name }}</title><head>|' ${{ env.target-file }}
           sed -i -e 's/lang="en"/lang="uk"/' ${{ env.target-file }}
 
 
@@ -89,6 +91,7 @@ jobs:
           sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
+          sed -i -e 's|<head>|<title>${{ env.dir-main-name }}</title><head>|' ${{ env.target-file }}
           sed -i -e 's/lang="en"/lang="uk"/' ${{ env.target-file }}
 
 
@@ -108,6 +111,7 @@ jobs:
           sed -i -e 's|</head>|\n    <link rel="icon" href="${{ env.favicon }}" type="image/x-icon">\n</head>|' ${{ env.target-file }}
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
+          sed -i -e 's|<head>|<title>${{ env.dir-main-name }}</title><head>|' ${{ env.target-file }}
           sed -i -e 's/lang="en"/lang="uk"/' ${{ env.target-file }}
 
 

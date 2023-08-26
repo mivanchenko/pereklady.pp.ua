@@ -6,8 +6,8 @@
 
 ## Інструменти
 
+[Помилки](/tools/mistakes)
+
 [Посилання](/tools/links)
 
 [Символи](/tools/symbols)
-
-[Словосполучення](/tools/wordships)
