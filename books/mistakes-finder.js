@@ -1,7 +1,6 @@
-(async function() {
+(async function() { window.onload = function () {
 
   let haystack = document.body.innerText;
-//  haystack = 'матеріял: вилита матеріялізмом.';
   haystack = haystack.replace(/(^|\s+|$)/g, ' ');
 
   let rules = await getRulesFrom(['/rules/test.json', '/rules/farion.json']);
@@ -79,4 +78,4 @@
   function logg(msg) {
     console.log(msg);
   }
-})();
+}})();

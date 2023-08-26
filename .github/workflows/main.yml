@@ -17,7 +17,7 @@ jobs:
       css-path: /css/main.css
       font-family: custom
       dir-main: ./
-      books-script-path: /books/loader.js
+      books-script-path: /books/mistakes-finder.js
       dir-books-1: ./books/ddt
       dir-books-1-name: Дух, душа, і тіло
       dir-tools-1: ./tools/links
