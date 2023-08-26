@@ -17,7 +17,7 @@ jobs:
       css-path: /css/main.css
       font-family: custom
       dir-main: ./
-      books-script-path: /books/script-loader.js
+      books-script-path: /books/loader.js
       dir-books-1: ./books/ddt
       dir-tools-1: ./tools/links
       dir-tools-2: ./tools/wordships
@@ -67,6 +67,7 @@ jobs:
           sed -i -e 's/font-family: /font-family: ${{ env.font-family }}\,/' ${{ env.target-file }}
           sed -i -e 's/position: fixed/position: relative/' ${{ env.target-file }}
           sed -i -e 's|</body>|\n    <script src="${{ env.books-script-path }}"></script>\n</body>|' ${{ env.target-file }}
+          sed -i -e 's|<head>|<title>Дух, душа, і тіло</title><head>|' ${{ env.target-file }}
 
 
       - name: Convert ${{ env.dir-tools-1 }}
