@@ -1,9 +1,9 @@
-(async function() { window.onload = function () {
+(function() { window.onload = async function () {
 
   let haystack = document.body.innerText;
   haystack = haystack.replace(/(^|\s+|$)/g, ' ');
 
-  let rules = await getRulesFrom(['/rules/test.json', '/rules/farion.json']);
+  let rules = await getRulesFrom(['/rules/my.json', '/rules/farion.json']);
 
   let firstFinding = true;
   for (let rule of rules) {
