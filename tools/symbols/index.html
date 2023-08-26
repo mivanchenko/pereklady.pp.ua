@@ -163,12 +163,27 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <table class="inlineTable">
     <tr>
       <td>—</td>
+      <td class="no-hover"><a href="https://copydashes.com/">(em dash)</a></td>
     </tr>
     <tr>
-      <td>э</td>
+      <td>–</td>
+      <td class="no-hover"><a href="https://copydashes.com/">(en dash)</a></td>
     </tr>
     <tr>
-      <td>ы</td>
+      <td>−</td>
+      <td class="no-hover"><a href="https://copydashes.com/">(minus)</a></td>
+    </tr>
+    <tr>
+      <td>­</td>
+      <td class="no-hover"><a href="https://unicode-explorer.com/c/00AD">(soft hyphen)</a></td>
+    </tr>
+    <tr>
+      <td>​</td>
+      <td class="no-hover"><a href="https://blanktext.net/">(zero width space)</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="no-hover"><a href="https://blanktext.net/">(no-break space)</a></td>
     </tr>
     <tr>
       <td>«</td>
@@ -190,9 +205,16 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
       background-color: #888;
       color: #000;
     }
+    .inlineTable td.no-hover:hover {
+      background-color: inherit;
+      color: inherit;
+    }
   </style>
   <script>
     document.querySelectorAll('tr > td').forEach(function(td) {
+      if (td.classList.contains('no-hover')) {
+        return;
+      }
       td.addEventListener('click', function(event) {
         var copyText = document.createElement('input');
         copyText.setAttribute('type', 'text');
