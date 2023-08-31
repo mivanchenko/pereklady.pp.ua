@@ -10,6 +10,8 @@ https://translate.google.com/?sl=ru&tl=uk&op=translate
 
 http://sum.in.ua/
 
+https://r2u.org.ua/
+
 http://emlab.ho.ua/Service----/Slovnyk_typovyh_pomylok_mod.html
 
 ## Коректори
