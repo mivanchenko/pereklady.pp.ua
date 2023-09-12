@@ -4,6 +4,7 @@
     myHeaders.append('apikey', 'temp123');
     const requestOptions = {
       method: 'GET',
+      // Don't supply headers to make CORS work
       // headers: myHeaders,
       redirect: 'follow',
     };
