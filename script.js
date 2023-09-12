@@ -4,7 +4,7 @@
     myHeaders.append('apikey', 'temp123');
     const requestOptions = {
       method: 'GET',
-      headers: myHeaders,
+      // headers: myHeaders,
       redirect: 'follow',
     };
     const response = await fetch('https://pereklady.pp.ua/rules/test.json', requestOptions);
