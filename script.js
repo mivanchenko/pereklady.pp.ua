@@ -8,11 +8,11 @@
       // headers: myHeaders,
       redirect: 'follow',
     };
-    const response = await fetch('https://pereklady.pp.ua/rules/test.json', requestOptions);
-    if (!response.ok) {
+    const responsObj = await fetch('https://pereklady.pp.ua/rules/test.json', requestOptions);
+    if (!responseObj.ok) {
       throw new Error('Cannot fetch rules');
     }
-    const rules = await response.json();
+    const rules = await responseObj.json();
     jsonp(JSON.stringify(rules));
   } catch (err) {
     console.error('Something went wrong when fetching rules');
